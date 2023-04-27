@@ -49,3 +49,16 @@
   font-size: 16px;
   color: white;
 }
+
+.tags {
+  font-size: 18px;
+  width: 100%;
+}
+
+.tagGroup {
+  margin: 10px 0px;
+}
+
+.tagGroup > input {
+  margin: 10px 0px;
+}

@@ -22,6 +22,14 @@ const NewBlog = () => {
             className="newblogInput newblogWrite"
           ></textarea>
         </div>
+        <div className="tagGroup">
+          <span>Tags</span>
+          <input
+            type="text"
+            className="newblogInput tags"
+            placeholder="Enter the tags... separated by comma"
+          />
+        </div>
         <button className="publish-btn">Publish</button>
       </form>
     </div>
