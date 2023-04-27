@@ -3,7 +3,7 @@ import "./Sidebar.css";
 import {
   FaHome,
   FaBars,
-  FaUserAlt,
+  // FaUserAlt,
   FaPhoneAlt,
   FaPlus,
   // FaSignInAlt,
@@ -21,11 +21,7 @@ const Sidebar = ({ children }) => {
       name: "Home",
       icon: <FaHome />,
     },
-    {
-      path: "/about",
-      name: "About",
-      icon: <FaUserAlt />,
-    },
+
     {
       path: "/new-blog",
       name: "New Blog",

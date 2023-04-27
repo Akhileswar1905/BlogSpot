@@ -44,3 +44,7 @@
   border-radius: 12px;
   cursor: pointer;
 }
+
+.signup > h1 {
+  font-family: "Poppins", sans-serif;
+}

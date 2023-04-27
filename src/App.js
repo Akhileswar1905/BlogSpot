@@ -3,7 +3,7 @@ import "./App.css";
 import { Route, Routes } from "react-router-dom";
 import Sidebar from "./components/Sidebar/Sidebar";
 import Dashboard from "./components/pages/Home/Home";
-import About from "./components/pages/About/About";
+// import About from "./components/pages/About/About";
 import Blog from "./components/pages/Blog/Blog";
 import NewBlog from "./components/pages/NewBlog/NewBlog";
 import Settings from "./components/pages/Settings/Settings";
@@ -16,7 +16,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Dashboard />} />
         <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/about" element={<About />} />
+        {/* <Route path="/about" element={<About />} /> */}
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/new-blog" element={<NewBlog />} />
