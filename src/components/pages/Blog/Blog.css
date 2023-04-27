@@ -1,0 +1,54 @@
+.blog-box {
+  flex: 9;
+}
+
+.blog-container {
+  display: flex;
+}
+
+.blogImg > img {
+  width: 100%;
+  height: 480px;
+}
+
+.blogInfo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.blogAuthor {
+  color: #b39656;
+}
+
+.blogTitle {
+  text-align: center;
+  font-family: "Varela Round", sans-serif;
+  display: flex;
+  margin-top: 20px;
+  justify-content: space-between;
+}
+
+.icons > .edit {
+  color: teal;
+  margin: 5px;
+}
+
+.icons > .delete {
+  margin: 5px;
+  color: tomato;
+}
+
+.desc {
+  font-size: 18px;
+  line-height: 24px;
+}
+
+.desc::first-letter {
+  font-weight: 700;
+  margin-left: 20px;
+
+  font-size: 30px;
+}

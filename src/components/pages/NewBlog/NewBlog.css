@@ -1,0 +1,51 @@
+.newblog {
+  display: flex;
+  flex-direction: column;
+}
+
+.newblogImg {
+  width: 100%;
+  height: 480px;
+}
+
+.plus-icon {
+  font-size: 25px;
+  color: rgb(121, 118, 118);
+  border-radius: 50%;
+  border: 1px solid black;
+  padding: 10px;
+  margin-right: 15px;
+  cursor: pointer;
+}
+
+.newblogInput {
+  font-size: 35px;
+  border: none;
+}
+
+.newblogInput:focus {
+  outline: none;
+}
+
+.formGroup {
+  display: flex;
+  align-items: center;
+  margin-top: 15px;
+}
+
+.newblogWrite {
+  font-size: 20px;
+  margin-top: 20px;
+  height: 50vh;
+  width: 100%;
+}
+
+.publish-btn {
+  padding: 10px;
+  top: 20px;
+  background-color: teal;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  color: white;
+}
