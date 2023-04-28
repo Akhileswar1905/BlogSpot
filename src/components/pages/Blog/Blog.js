@@ -1,8 +1,27 @@
+import { useParams } from "react-router-dom";
 import Article from "../Article/Article";
 import "./Blog.css";
 import { FaEdit, FaTrashAlt } from "react-icons/fa";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 const Blog = () => {
+  const params = useParams();
+  const id = params.id;
+  console.log(id);
+  const [blog, setBlog] = useState({});
+
+  const fetchBlog = async () => {
+    const res = await axios(`http://localhost:3001/${id}`);
+    setBlog(res.data[0]);
+    console.log(res.data);
+  };
+
+  useEffect(() => {
+    fetchBlog();
+    // console.log(blog);
+  }, []);
+
   return (
     <>
       <div className="blog-container">
@@ -15,7 +34,7 @@ const Blog = () => {
               />
             </div>
             <h1 className="blogTitle">
-              Blog Title
+              {blog.blogTitle}
               <div className="icons">
                 <FaEdit className="edit" />
                 <FaTrashAlt className="delete" />
@@ -23,26 +42,14 @@ const Blog = () => {
             </h1>
             <div className="blogInfo">
               <span className="blogAuthor">
-                Author : <b>Author</b>
+                Author : <b>{blog.username}</b>
               </span>
-              <span className="time">1 hour ago</span>
+              <span className="time">
+                {new Date(blog.createdAt).toDateString()}
+              </span>
             </div>
             <div className="blogDesc">
-              <p className="desc">
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                Possimus, ducimus dolorum delectus praesentium vel quas porro
-                at, facilis maiores aperiam nihil cumque harum iusto facere
-                recusandae necessitatibus distinctio. Soluta sequi perferendis
-                molestiae ratione, quae eius facilis earum quisquam autem
-                voluptates veniam alias cupiditate aliquam magnam fuga ex
-                assumenda perspiciatis placeat velit nesciunt? Quos cupiditate
-                eius ea fuga fugit est consectetur voluptas harum in accusamus
-                necessitatibus, nobis, labore molestiae ipsum nemo, omnis dolore
-                autem pariatur explicabo soluta quibusdam repellat nulla hic
-                cumque! Amet temporibus ipsum quidem blanditiis nam minima sequi
-                veritatis quasi provident! Officia quaerat ex incidunt quos
-                nesciunt soluta. Delectus!
-              </p>
+              <p className="desc">{blog.blogContent}</p>
             </div>
           </div>
         </div>
