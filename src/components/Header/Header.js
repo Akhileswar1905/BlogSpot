@@ -1,11 +1,13 @@
 import "./Header.css";
-
+import logo from "../../Blog Spot-1.jpg";
 const Header = () => {
   return (
     <div className="box">
       <div className="headerTitles">
-        <span className="large">React & NodeJS</span>
-        <span className="small">Blog Spot</span>
+        <span className="small">
+          <img src={logo} alt="" className="logo" />
+          Blog Spot
+        </span>
       </div>
       <div className="headerImg">
         <img

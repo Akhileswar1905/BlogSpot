@@ -4,17 +4,20 @@ import {
   FaHome,
   FaBars,
   // FaUserAlt,
-  FaPhoneAlt,
+  // FaPhoneAlt,
   FaPlus,
-  // FaSignInAlt,
+  FaSignInAlt,
   FaSignOutAlt,
   FaTools,
 } from "react-icons/fa";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 
 const Sidebar = ({ children }) => {
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => setIsOpen(!isOpen);
+  // const token = localStorage.getItem("token");
+  // const navigate = useNavigate();
+
   const menuItem = [
     {
       path: "/",
@@ -27,15 +30,15 @@ const Sidebar = ({ children }) => {
       name: "New Blog",
       icon: <FaPlus />,
     },
-    {
-      path: "/contact",
-      name: "Contact",
-      icon: <FaPhoneAlt />,
-    },
+    // {
+    //   path: "/contact",
+    //   name: "Contact",
+    //   icon: <FaPhoneAlt />,
+    // },
     {
       path: "/login",
       name: "Login",
-      icon: <FaSignOutAlt />,
+      icon: <FaSignInAlt />,
     },
     {
       path: "/settings",
@@ -51,9 +54,7 @@ const Sidebar = ({ children }) => {
             to={"/"}
             style={{ display: isOpen ? "block" : "none" }}
             className="logo"
-          >
-            BlogSpot
-          </Link>
+          ></Link>
           <div style={{ marginLeft: isOpen ? "50px" : "0px" }} className="bars">
             <FaBars onClick={toggle} />
           </div>

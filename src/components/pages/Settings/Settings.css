@@ -51,7 +51,14 @@
   margin: 10px 0px;
 }
 
-.settingsForm > input {
+.settingsInput {
+  width: 75%;
+  padding: 7px;
+  border: none;
+  border-bottom: 1px solid gray;
+}
+
+.settingsForm > textarea {
   width: 75%;
   padding: 7px;
   border: none;
@@ -60,6 +67,11 @@
 
 .settingsInput:focus {
   outline: none;
+}
+
+.opt {
+  display: flex;
+  gap: 7px;
 }
 
 .settingsSubmit {

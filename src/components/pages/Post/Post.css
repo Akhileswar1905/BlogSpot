@@ -24,15 +24,18 @@
 }
 
 .postCat {
-  margin: 10px;
   font-family: "Secular One", sans-serif;
   cursor: pointer;
-  line-height: 15px;
-  color: #be9656;
+  line-height: 10px;
+  color: #fff;
+  background-color: #b396a7;
+  padding: 6px;
+  border-radius: 50px;
+  margin: 5px;
 }
 
 .postCategories {
-  margin: 10px;
+  margin: 15px;
 }
 
 .postTitle {
@@ -51,4 +54,9 @@
   display: -webkit-box;
   -webkit-line-clamp: 4;
   -webkit-box-orient: vertical;
+}
+
+.postImg > img {
+  float: left;
+  width: 400px;
 }
