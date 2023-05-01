@@ -21,6 +21,8 @@ const Blog = () => {
   useEffect(() => {
     fetchBlog();
   }, []);
+  const token = localStorage.getItem("token");
+  console.log("True or False", token === blog.userId);
 
   return (
     <>
@@ -39,7 +41,10 @@ const Blog = () => {
             </div>
             <h1 className="blogTitle">
               {blog.blogTitle}
-              <div className="icons">
+              <div
+                className="icons"
+                style={{ display: token === blog.userId ? "inline" : "none" }}
+              >
                 <FaEdit className="edit" />
                 <FaTrashAlt className="delete" />
               </div>

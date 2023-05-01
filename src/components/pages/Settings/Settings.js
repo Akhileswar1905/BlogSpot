@@ -37,6 +37,7 @@ const Settings = () => {
 
   const id = localStorage.getItem("token");
 
+  const [user, setUser] = useState({});
   // useEffect
   useEffect(() => {
     const uploadFile = () => {
@@ -44,7 +45,6 @@ const Settings = () => {
       console.log(filename);
       const storageRef = ref(storage, filename);
       const uploadTask = uploadBytesResumable(storageRef, file);
-
       // Progress
       uploadTask.on(
         "state_changed",
@@ -81,11 +81,12 @@ const Settings = () => {
   // Fetching user
   const handleSubmit = () => {
     const fetchUser = async () => {
-      const user = await axios.put(
+      const res = await axios.put(
         `https://blogspot-api-why2.onrender.com/users/${id}`,
         form
       );
-      console.log(user);
+      console.log("res:", res);
+      setUser(user);
     };
     fetchUser();
   };
@@ -118,7 +119,11 @@ const Settings = () => {
         </div>
         <div className="settingsPP">
           <img
-            src="https://i.pinimg.com/564x/ad/73/1c/ad731cd0da0641bb16090f25778ef0fd.jpg"
+            src={
+              user.profilePicture
+                ? user.profilePicture
+                : "https://i.pinimg.com/564x/ad/73/1c/ad731cd0da0641bb16090f25778ef0fd.jpg"
+            }
             alt=""
             className="img"
           />
