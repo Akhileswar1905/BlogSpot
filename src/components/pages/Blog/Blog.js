@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Article from "../Article/Article";
 import "./Blog.css";
 import { FaEdit, FaTrashAlt } from "react-icons/fa";
@@ -22,7 +22,13 @@ const Blog = () => {
     fetchBlog();
   }, []);
   const token = localStorage.getItem("token");
-  console.log("True or False", token === blog.userId);
+
+  const navigate = useNavigate();
+
+  const handleDelete = async () => {
+    await axios.delete(`https://blogspot-api-why2.onrender.com/blogs/${id}`);
+    navigate("/");
+  };
 
   return (
     <>
@@ -46,7 +52,7 @@ const Blog = () => {
                 style={{ display: token === blog.userId ? "inline" : "none" }}
               >
                 <FaEdit className="edit" />
-                <FaTrashAlt className="delete" />
+                <FaTrashAlt className="delete" onClick={handleDelete} />
               </div>
             </h1>
             <div className="blogInfo">

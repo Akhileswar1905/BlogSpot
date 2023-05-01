@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { storage } from "../../../firebase/FireBase";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const Settings = () => {
   const [form, setForm] = useState({});
@@ -78,6 +79,7 @@ const Settings = () => {
     file && uploadFile();
   }, [file, img]);
 
+  const navigate = useNavigate();
   // Fetching user
   const handleSubmit = () => {
     const fetchUser = async () => {
@@ -87,6 +89,7 @@ const Settings = () => {
       );
       console.log("res:", res);
       setUser(user);
+      navigate("/");
     };
     fetchUser();
   };

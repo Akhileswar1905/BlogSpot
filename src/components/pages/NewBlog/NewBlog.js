@@ -96,7 +96,6 @@ const NewBlog = () => {
     console.log(post);
     await axios.post("https://blogspot-api-why2.onrender.com/blogs", post);
     // console.log(res.data);
-    navigate("/");
   };
 
   return (
@@ -153,6 +152,7 @@ const NewBlog = () => {
               username: username,
             });
             handleSubmit(e);
+            navigate("/");
           }}
           className="publish-btn"
         >

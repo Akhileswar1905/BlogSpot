@@ -1,4 +1,3 @@
-import { useState } from "react";
 import Header from "../../Header/Header";
 import Article from "../Article/Article";
 import Posts from "../Posts/Posts";
