@@ -35,7 +35,8 @@
   margin-bottom: 15px;
 }
 
-.categoryList > li {
+.listItem {
+  color: #000;
   display: inline-block;
   padding-bottom: 10px;
   width: 50%;

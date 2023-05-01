@@ -3,19 +3,20 @@ import "./Sidebar.css";
 import {
   FaHome,
   FaBars,
-  // FaUserAlt,
+  FaUserAlt,
   // FaPhoneAlt,
   FaPlus,
   FaSignInAlt,
-  FaSignOutAlt,
-  FaTools,
+  // FaSignOutAlt,
+  FaBookmark,
+  // FaTools,
 } from "react-icons/fa";
-import { Link, NavLink, useNavigate } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 const Sidebar = ({ children }) => {
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => setIsOpen(!isOpen);
-  // const token = localStorage.getItem("token");
+  const token = localStorage.getItem("token");
   // const navigate = useNavigate();
 
   const menuItem = [
@@ -26,24 +27,19 @@ const Sidebar = ({ children }) => {
     },
 
     {
-      path: "/new-blog",
+      path: token ? "/new-blog" : "/auth",
       name: "New Blog",
       icon: <FaPlus />,
     },
-    // {
-    //   path: "/contact",
-    //   name: "Contact",
-    //   icon: <FaPhoneAlt />,
-    // },
     {
-      path: "/login",
-      name: "Login",
-      icon: <FaSignInAlt />,
+      path: token ? "/saved-blogs" : "/auth",
+      name: "Saved Blogs",
+      icon: <FaBookmark />,
     },
     {
-      path: "/settings",
-      name: "Settings",
-      icon: <FaTools />,
+      path: token ? "/profile" : "/login",
+      name: token ? "Profile" : "Login",
+      icon: token ? <FaUserAlt /> : <FaSignInAlt />,
     },
   ];
   return (
@@ -52,10 +48,12 @@ const Sidebar = ({ children }) => {
         <div className="top_section">
           <Link
             to={"/"}
-            style={{ display: isOpen ? "block" : "none" }}
+            style={{ display: isOpen ? "block" : "none", width: "100%" }}
             className="logo"
-          ></Link>
-          <div style={{ marginLeft: isOpen ? "50px" : "0px" }} className="bars">
+          >
+            Blog Spot
+          </Link>
+          <div style={{ marginLeft: isOpen ? "30px" : "0px" }} className="bars">
             <FaBars onClick={toggle} />
           </div>
         </div>

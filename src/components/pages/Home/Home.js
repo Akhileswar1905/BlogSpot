@@ -5,15 +5,9 @@ import Posts from "../Posts/Posts";
 import "./Home.css";
 
 const Home = () => {
-  let [c, setC] = useState(0);
-  document.addEventListener("onload", () => {
-    setC(c++);
-  });
-
   return (
     <>
       <Header />
-      {console.log(c)}
       <div className="home">
         <Posts />
         <Article />

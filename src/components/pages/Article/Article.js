@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import "./Article.css";
 import {
   FaFacebookSquare,
@@ -25,29 +26,32 @@ const categories = [
 ].sort();
 
 const Article = () => {
-  const user = JSON.parse(localStorage.getItem("user"));
-  console.log(user);
   return (
     <div className="article">
       <div className="articleItem">
         <span className="title">ABOUT ME </span>{" "}
         <img
           src={
-            user.profilePicture
-              ? user.profilePicture
-              : "https://i.pinimg.com/564x/ad/73/1c/ad731cd0da0641bb16090f25778ef0fd.jpg"
+            "https://i.pinimg.com/564x/ad/73/1c/ad731cd0da0641bb16090f25778ef0fd.jpg"
           }
           alt="pp"
           className="profilePic"
         />
-        <p>{user.profileDescription}</p>
+        <p>
+          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Autem
+          dolores iusto soluta veritatis quo totam tenetur eaque distinctio,
+          odio ea, ullam blanditiis aliquam maiores obcaecati provident quos,
+          voluptate fuga! Sunt.
+        </p>
       </div>
       <div className="articleItem">
         <span className="title">CATEGORIES</span>
         <ul className="categoryList">
-          {user.cats
-            ? user.cats.map((cat) => <li className="listItem">{cat}</li>)
-            : categories.map((cat) => <li className="listItem">{cat}</li>)}
+          {categories.map((cat, index) => (
+            <Link to={`/?cat=${cat}`} key={index} className="listItem">
+              {cat}
+            </Link>
+          ))}
         </ul>
       </div>
 

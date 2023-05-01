@@ -79,14 +79,16 @@ const Settings = () => {
   }, [file, img]);
 
   // Fetching user
-
-  const fetchUser = async () => {
-    const user = await axios.put(`http://127.0.0.1:3001/user/${id}`, form);
-    console.log(user);
-    localStorage.setItem("user", JSON.stringify(form));
+  const handleSubmit = () => {
+    const fetchUser = async () => {
+      const user = await axios.put(
+        `https://blogspot-api-why2.onrender.com/users/${id}`,
+        form
+      );
+      console.log(user);
+    };
+    fetchUser();
   };
-
-  fetchUser();
 
   const cats = [
     "Movies",
@@ -188,7 +190,7 @@ const Settings = () => {
               <label id="category">{cat}</label>
             </div>
           ))}
-          <button className="settingsSubmit" onClick={fetchUser}>
+          <button className="settingsSubmit" onClick={handleSubmit}>
             Update
           </button>
         </div>

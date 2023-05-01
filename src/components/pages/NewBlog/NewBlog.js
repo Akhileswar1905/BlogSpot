@@ -9,7 +9,17 @@ import { storage } from "../../../firebase/FireBase";
 const NewBlog = () => {
   const [post, setPost] = useState({});
   const [file, setFile] = useState(null);
+  const [username, setUsername] = useState("");
+  const token = localStorage.getItem("token");
 
+  const fetchUser = async () => {
+    const user = await axios.get(
+      `https://blogspot-api-why2.onrender.com/users/${token}`
+    );
+    console.log("user:", user.data.username);
+    console.log(token);
+    setUsername(user.data.username);
+  };
   const handleChange = (e) => {
     if (e.target.name === "blogTags") {
       const tags = e.target.value.split(",");
@@ -74,6 +84,7 @@ const NewBlog = () => {
       );
     };
     file && uploadFile();
+    fetchUser();
   }, [file, img]);
 
   // use navigate
@@ -81,8 +92,9 @@ const NewBlog = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     console.log(post);
-    await axios.post("http://localhost:3001/", post);
+    await axios.post("https://blogspot-api-why2.onrender.com/blogs", post);
     // console.log(res.data);
     navigate("/");
   };
@@ -132,7 +144,18 @@ const NewBlog = () => {
             placeholder="Enter the tags... separated by comma"
           />
         </div>
-        <button onClick={handleSubmit} className="publish-btn">
+        <button
+          onClick={(e) => {
+            console.log(token);
+            setPost({
+              ...post,
+              userId: token,
+              username: username,
+            });
+            handleSubmit(e);
+          }}
+          className="publish-btn"
+        >
           Publish
         </button>
       </form>

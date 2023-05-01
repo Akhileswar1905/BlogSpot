@@ -10,16 +10,16 @@ const Blog = () => {
   const id = params.id;
   console.log(id);
   const [blog, setBlog] = useState({});
-
   const fetchBlog = async () => {
-    const res = await axios(`http://localhost:3001/${id}`);
-    setBlog(res.data[0]);
+    const res = await axios(
+      `https://blogspot-api-why2.onrender.com/blogs/${id}`
+    );
+    setBlog(res.data);
     console.log(res.data);
   };
 
   useEffect(() => {
     fetchBlog();
-    console.log(blog);
   }, []);
 
   return (

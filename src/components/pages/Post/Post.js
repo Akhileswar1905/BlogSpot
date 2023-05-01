@@ -1,5 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import "./Post.css";
+// import { FaBookmark, FaRegBookmark } from "react-icons/fa";
+import { useState } from "react";
 
 const Post = (props) => {
   const post = props.post;
@@ -7,6 +9,19 @@ const Post = (props) => {
   const handleClick = (e) => {
     console.log(post._id);
     navigate(`/${post._id}`);
+  };
+
+  const [save, setSave] = useState(false);
+
+  const handleBookMark = (e) => {
+    console.log(e.target.className);
+    if (!save) {
+      e.target.className = "fa-solid fa-bookmark";
+      setSave(true);
+    } else {
+      e.target.className = "fa-regular fa-bookmark";
+      setSave(false);
+    }
   };
 
   return (
@@ -22,10 +37,25 @@ const Post = (props) => {
           onClick={handleClick}
         />
       </div>
+
       <div className="postInfo">
+        <div className="bookmark">
+          <i
+            className="fa-regular fa-bookmark"
+            onClick={handleBookMark}
+            style={{ cursor: "pointer" }}
+          ></i>
+        </div>
+
         <div className="postCategories">
           {post.blogTags.map((cat, index) => (
-            <span className="postCat" key={index}>
+            <span
+              onClick={() => {
+                navigate(`/?cat=${cat}`);
+              }}
+              className="postCat"
+              key={index}
+            >
               {cat}
             </span>
           ))}

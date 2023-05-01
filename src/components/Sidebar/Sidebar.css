@@ -21,17 +21,20 @@ main {
   display: flex;
   align-items: center;
   padding: 20px 15px;
+  justify-content: space-around;
 }
+
 .logo {
-  font-size: 30px;
+  font-size: 27px;
+  width: 100%;
   font-family: "Josefin Sans", sans-serif;
   color: #000;
 }
 .bars {
   display: flex;
   font-size: 25px;
-  margin-left: 50px;
 }
+
 .link {
   display: flex;
   color: #000;

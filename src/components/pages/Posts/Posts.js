@@ -2,15 +2,19 @@ import { useEffect, useState } from "react";
 import Post from "../Post/Post";
 import "./Posts.css";
 import axios from "axios";
+import { useLocation } from "react-router-dom";
 const Posts = () => {
   // Fetching Posts using axios
 
   const [posts, setPosts] = useState([]);
-
+  const { search } = useLocation();
+  console.log(search);
   useEffect(() => {
     const fetchPosts = async () => {
-      const res = await axios.get("http://127.0.0.1:3001/");
-      // console.log(res.data);
+      const res = await axios.get(
+        `https://blogspot-api-why2.onrender.com/blogs${search}`
+      );
+      console.log(res.data);
       setPosts(res.data);
     };
     fetchPosts();

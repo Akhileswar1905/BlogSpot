@@ -14,9 +14,15 @@ const SignUp = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const res = await axios.post("http://127.0.0.1:3001/user/signup", form);
+    const res = await axios.post(
+      "https://blogspot-api-why2.onrender.com/users/signup",
+      form
+    );
     console.log(res.data);
-    navigate("/settings");
+
+    localStorage.setItem("token", res.data._id);
+
+    navigate("/");
   };
 
   return (

@@ -16,12 +16,15 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log(form);
-    const res = await axios.post("http://127.0.0.1:3001/user/login", form);
+    const res = await axios.post(
+      "https://blogspot-api-why2.onrender.com/users/login",
+      form
+    );
     console.log(res.data[0]);
 
     if (res.data.length) {
       localStorage.setItem("token", res.data[0]._id);
-      navigate("/");
+      navigate("/profile");
     } else {
       setErrMsg("block");
     }
