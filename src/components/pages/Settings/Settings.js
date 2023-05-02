@@ -13,21 +13,20 @@ const Settings = () => {
   const [file, setFile] = useState(null);
   const img = document.querySelector(".img");
   const handleForm = (e) => {
-    console.log(form);
+    console.log(e.target.name, form);
     if (e.target.name === "file") {
       setForm({
         ...form,
         [e.target.name]: e.target.files[0],
       });
       setFile(e.target.files[0]);
-    } else if (e.target.name === "cats") {
-      setCat([...cat, e.target.value]);
+    } else if (e.target.name === "categories") {
       cat.push(e.target.value);
       setForm({
         ...form,
         [e.target.name]: cat,
       });
-      console.log("cat", cat);
+      console.log(cat);
     } else {
       setForm({
         ...form,
@@ -38,8 +37,7 @@ const Settings = () => {
 
   const id = localStorage.getItem("token");
 
-  const [user, setUser] = useState({});
-  // useEffect
+  // uploading pp
   useEffect(() => {
     const uploadFile = () => {
       const filename = new Date().getTime() + file.name; //setting filename
@@ -79,19 +77,17 @@ const Settings = () => {
     file && uploadFile();
   }, [file, img]);
 
-  const navigate = useNavigate();
   // Fetching user
-  const handleSubmit = () => {
-    const fetchUser = async () => {
-      const res = await axios.put(
-        `https://blogspot-api-why2.onrender.com/users/${id}`,
-        form
-      );
-      console.log("res:", res);
-      setUser(user);
-      navigate("/");
-    };
-    fetchUser();
+  const navigate = useNavigate();
+  const [user, setUser] = useState({});
+  const handleSubmit = async () => {
+    const res = await axios.put(
+      `https://blogspot-api-why2.onrender.com/users/${id}`,
+      form
+    );
+    console.log("res:", res.data);
+    setUser(user);
+    navigate("/");
   };
 
   const cats = [
@@ -142,6 +138,8 @@ const Settings = () => {
             style={{ display: "none" }}
           />
         </div>
+
+        {/* UserName */}
         <div className="settingsForm">
           <label className="settingsLabel">UserName</label>
           <input
@@ -151,6 +149,8 @@ const Settings = () => {
             name="username"
             placeholder="Enter Your Name"
           />
+
+          {/* Email */}
           <label className="settingsLabel">Email</label>
           <input
             onChange={handleForm}
@@ -159,6 +159,8 @@ const Settings = () => {
             name="email"
             placeholder="Enter Email Id"
           />
+
+          {/* Password */}
           <label className="settingsLabel">Password</label>
           <input
             onChange={handleForm}
@@ -166,6 +168,8 @@ const Settings = () => {
             name="password"
             type="password"
           />
+
+          {/* Desc */}
           <div className="settingsForm">
             <label className="settingsLabel">About Me</label>
             <textarea
@@ -175,13 +179,15 @@ const Settings = () => {
               name="profileDescription"
             />
           </div>
+
+          {/* Categories */}
           <label className="settingsLabel">Categories</label>
           <div className="opt">
             <input
               type="checkbox"
               onChange={handleForm}
-              value={"trending"}
-              name="cats"
+              value={"Trending"}
+              name="categories"
               id="category"
             />
             <label id="category">Trending</label>
@@ -191,13 +197,15 @@ const Settings = () => {
               <input
                 type="checkbox"
                 onChange={handleForm}
-                name="cats"
+                name="categories"
                 value={cat}
                 id="category"
               />
               <label id="category">{cat}</label>
             </div>
           ))}
+
+          {/* Submit btn */}
           <button className="settingsSubmit" onClick={handleSubmit}>
             Update
           </button>

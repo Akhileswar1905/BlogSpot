@@ -60,11 +60,17 @@ const Article = () => {
       <div className="articleItem">
         <span className="title">CATEGORIES</span>
         <ul className="categoryList">
-          {categories.map((cat, index) => (
-            <Link to={`/?cat=${cat}`} key={index} className="listItem">
-              {cat}
-            </Link>
-          ))}
+          {user.categories
+            ? user.categories.map((cat, index) => (
+                <Link to={`/?cat=${cat}`} key={index} className="listItem">
+                  {cat}
+                </Link>
+              ))
+            : categories.map((cat, index) => (
+                <Link to={`/?cat=${cat}`} key={index} className="listItem">
+                  {cat}
+                </Link>
+              ))}
         </ul>
       </div>
 
