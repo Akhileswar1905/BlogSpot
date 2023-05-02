@@ -24,6 +24,8 @@ const Login = () => {
 
     if (res.data.length) {
       localStorage.setItem("token", res.data[0]._id);
+      localStorage.setItem("username", res.data[0].username);
+
       navigate("/profile");
     } else {
       setErrMsg("block");

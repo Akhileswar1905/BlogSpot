@@ -21,6 +21,7 @@ const SignUp = () => {
     console.log(res.data);
 
     localStorage.setItem("token", res.data._id);
+    localStorage.setItem("usernames", res.data.username);
 
     navigate("/");
   };

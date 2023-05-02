@@ -11,16 +11,12 @@ const Post = (props) => {
     navigate(`/${post._id}`);
   };
 
-  const [save, setSave] = useState(false);
-
   const handleBookMark = (e) => {
-    console.log(e.target.className);
-    if (!save) {
+    console.log("id: ", e.target.id);
+    if (e.target.className === "fa-regular fa-bookmark") {
       e.target.className = "fa-solid fa-bookmark";
-      setSave(true);
     } else {
       e.target.className = "fa-regular fa-bookmark";
-      setSave(false);
     }
   };
 
@@ -44,6 +40,7 @@ const Post = (props) => {
             className="fa-regular fa-bookmark"
             onClick={handleBookMark}
             style={{ cursor: "pointer" }}
+            id={post._id}
           ></i>
         </div>
 

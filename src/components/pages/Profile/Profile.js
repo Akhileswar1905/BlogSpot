@@ -31,6 +31,7 @@ const Profile = () => {
         <button
           onClick={() => {
             localStorage.removeItem("token");
+            localStorage.removeItem("username");
             navigate("/login");
           }}
         >

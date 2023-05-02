@@ -9,17 +9,11 @@ import { storage } from "../../../firebase/FireBase";
 const NewBlog = () => {
   const [post, setPost] = useState({});
   const [file, setFile] = useState(null);
-  const [username, setUsername] = useState("");
+  const username = localStorage.getItem("username");
   const token = localStorage.getItem("token");
+  // use navigate
+  const navigate = useNavigate();
 
-  const fetchUser = async () => {
-    const user = await axios.get(
-      `https://blogspot-api-why2.onrender.com/users/${token}`
-    );
-    console.log("user:", user.data.username);
-    console.log(token);
-    setUsername(user.data.username);
-  };
   const handleChange = (e) => {
     if (e.target.name === "blogTags") {
       const tags = e.target.value.split(",");
@@ -84,18 +78,24 @@ const NewBlog = () => {
       );
     };
     file && uploadFile();
-    fetchUser();
   }, [file, img]);
 
-  // use navigate
-  const navigate = useNavigate();
-
   const handleSubmit = async (e) => {
-    e.preventDefault();
-
+    console.log("Submit");
+    setPost({
+      ...post,
+      userId: token,
+      username: username,
+    });
     console.log(post);
-    await axios.post("https://blogspot-api-why2.onrender.com/blogs", post);
-    // console.log(res.data);
+    e.preventDefault();
+    const res = await axios.post(
+      "https://blogspot-api-why2.onrender.com/blogs",
+      post
+    );
+    console.log("Success");
+    console.log(res.data);
+    navigate("/");
   };
 
   return (
@@ -105,7 +105,13 @@ const NewBlog = () => {
         alt="img"
         className="newblogImg img"
       />
-      <form className="newblogForm" onSubmit={handleSubmit}>
+
+      <form
+        className="newblogForm"
+        onSubmit={(e) => {
+          handleSubmit(e);
+        }}
+      >
         <div className="formGroup">
           <label htmlFor="file">
             <FaPlus className="plus-icon" />
@@ -143,19 +149,7 @@ const NewBlog = () => {
             placeholder="Enter the tags... separated by comma"
           />
         </div>
-        <button
-          onClick={(e) => {
-            console.log(token);
-            setPost({
-              ...post,
-              userId: token,
-              username: username,
-            });
-            handleSubmit(e);
-            navigate("/");
-          }}
-          className="publish-btn"
-        >
+        <button type="submit" className="publish-btn">
           Publish
         </button>
       </form>
