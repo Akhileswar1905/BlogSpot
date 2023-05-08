@@ -11,9 +11,13 @@ const Post = (props) => {
     navigate(`/${post._id}`);
   };
 
+  const [saved, setSaved] = useState([]);
   const handleBookMark = (e) => {
     console.log("id: ", e.target.id);
     if (e.target.className === "fa-regular fa-bookmark") {
+      saved.push(e.target.id);
+      setSaved(saved);
+      console.log(saved);
       e.target.className = "fa-solid fa-bookmark";
     } else {
       e.target.className = "fa-regular fa-bookmark";
@@ -29,6 +33,7 @@ const Post = (props) => {
               ? post.blogImg
               : "https://images.unsplash.com/photo-1499750310107-5fef28a66643?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8YmxvZ3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"
           }
+          loading="lazy"
           alt="blog"
           onClick={handleClick}
         />

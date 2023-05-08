@@ -1,5 +1,4 @@
 import { useNavigate, useParams } from "react-router-dom";
-import Article from "../Article/Article";
 import "./Blog.css";
 import { FaEdit, FaTrashAlt } from "react-icons/fa";
 import { useEffect, useState } from "react";
@@ -8,14 +7,19 @@ import axios from "axios";
 const Blog = () => {
   const params = useParams();
   const id = params.id;
-  console.log(id);
+  // console.log(id);
   const [blog, setBlog] = useState({});
   const fetchBlog = async () => {
     const res = await axios(
       `https://blogspot-api-why2.onrender.com/blogs/${id}`
     );
     setBlog(res.data);
+
     console.log(res.data);
+
+    const content = document.querySelector(".desc");
+    console.log(res.data.blogContent);
+    content.innerHTML = `${res.data.blogContent}`.replace(/\n/g, "<br>");
   };
 
   useEffect(() => {
@@ -64,11 +68,19 @@ const Blog = () => {
               </span>
             </div>
             <div className="blogDesc">
-              <p className="desc">{blog.blogContent}</p>
+              <p className="desc">
+                {/* {`${blog.blogContent}`.replace(/\n/g, "<br>")} */}
+              </p>
+            </div>
+          </div>
+          <div className="commentBox">
+            <h3>Comment Section</h3>
+            <div className="comment">
+              <textarea placeholder="Enter Your Comment"></textarea>
+              <button className="submit">Post</button>
             </div>
           </div>
         </div>
-        <Article />
       </div>
     </>
   );
