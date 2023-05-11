@@ -15,7 +15,7 @@ const SignUp = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const res = await axios.post(
-      "https://blogspot-api-why2.onrender.com/users/signup",
+      "https://blogspot-kn7q.onrender.com/users/signup",
       form
     );
     console.log(res.data);

@@ -82,7 +82,7 @@ const Settings = () => {
   const [user, setUser] = useState({});
   const handleSubmit = async () => {
     const res = await axios.put(
-      `https://blogspot-api-why2.onrender.com/users/${id}`,
+      `https://blogspot-kn7q.onrender.com/users/${id}`,
       form
     );
     console.log("res:", res.data);

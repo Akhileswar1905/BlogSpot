@@ -34,7 +34,7 @@ const Article = () => {
   useEffect(() => {
     const fetchUser = async () => {
       const res = await axios.get(
-        `https://blogspot-api-why2.onrender.com/users/${token}`
+        `https://blogspot-kn7q.onrender.com/users/${token}`
       );
       console.log(res.data);
       setUser(res.data);

@@ -12,7 +12,7 @@ const Posts = () => {
   useEffect(() => {
     const fetchPosts = async () => {
       const res = await axios.get(
-        `https://blogspot-api-why2.onrender.com/blogs${search}`
+        `https://blogspot-kn7q.onrender.com/blogs${search}`
       );
       console.log(res.data);
       setPosts(res.data);

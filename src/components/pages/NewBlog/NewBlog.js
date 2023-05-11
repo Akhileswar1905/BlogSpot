@@ -90,7 +90,7 @@ const NewBlog = () => {
     console.log(post);
     e.preventDefault();
     const res = await axios.post(
-      "https://blogspot-api-why2.onrender.com/blogs",
+      "https://blogspot-kn7q.onrender.com/blogs",
       post
     );
     console.log("Success");

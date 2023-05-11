@@ -17,7 +17,7 @@ const Login = () => {
     e.preventDefault();
     console.log(form);
     const res = await axios.post(
-      "https://blogspot-api-why2.onrender.com/users/login",
+      "https://blogspot-kn7q.onrender.com/users/login",
       form
     );
     console.log(res.data[0]);

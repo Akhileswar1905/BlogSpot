@@ -8,7 +8,7 @@ const MyBlogs = () => {
   useEffect(() => {
     const fetchPosts = async () => {
       const res = await axios.post(
-        `https://blogspot-api-why2.onrender.com/blogs/my-blogs`,
+        `https://blogspot-kn7q.onrender.com/blogs/my-blogs`,
         {
           userId: token,
         }

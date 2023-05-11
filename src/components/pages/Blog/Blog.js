@@ -10,9 +10,7 @@ const Blog = () => {
   // console.log(id);
   const [blog, setBlog] = useState({});
   const fetchBlog = async () => {
-    const res = await axios(
-      `https://blogspot-api-why2.onrender.com/blogs/${id}`
-    );
+    const res = await axios(`https://blogspot-kn7q.onrender.com/blogs/${id}`);
     setBlog(res.data);
 
     console.log(res.data);
@@ -30,7 +28,7 @@ const Blog = () => {
   const navigate = useNavigate();
 
   const handleDelete = async () => {
-    await axios.delete(`https://blogspot-api-why2.onrender.com/blogs/${id}`);
+    await axios.delete(`https://blogspot-kn7q.onrender.com/blogs/${id}`);
     navigate("/");
   };
 
